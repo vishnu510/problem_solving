@@ -5,19 +5,19 @@ using namespace std;
 int getLiveNeighbours(vector<vector<int>>& curr, int i, int j, int m, int n) {
 	int liveNeighbours = 0;
 	if(i>0) {
-		//check the upper neighbour
+		
 		if(curr[i-1][j] == 1) liveNeighbours++;
 	}
 	if(i<m-1) {
-		//check the lower neighbour
+		
 		if(curr[i+1][j] == 1) liveNeighbours++;
 	}
 	if(j>0) {
-		//check the left neighbour
+		
 		if(curr[i][j-1] == 1) liveNeighbours++;
 	}
 	if(j<n-1) {
-		//check the right neighbour
+	
 		if(curr[i][j+1] == 1) liveNeighbours++;
 	}
 
