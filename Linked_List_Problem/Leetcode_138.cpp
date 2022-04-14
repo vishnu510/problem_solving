@@ -59,6 +59,24 @@ Node* clone(Node *start)
 	return temp;
 }
 
+Node* clone_1(Node *head)
+{
+	map<Node*, Node*> m;
+        int i=0;
+        Node* ptr = head;
+        while (ptr) {
+            m[ptr] =new Node(ptr->data);
+            ptr = ptr->next;
+        }
+        ptr = head;
+        while (ptr) {
+            m[ptr]->next = m[ptr->next];
+            m[ptr]->random = m[ptr->random];
+            ptr = ptr->next;
+        }
+        return m[head];
+}
+
 int main()
 {
 	Node* start = new Node(1);
@@ -78,7 +96,10 @@ int main()
 	print(start);
 	cout << "\nCloned list : \n";
 	Node *cloned_list = clone(start);
-	print(cloned_list);
+    print(cloned_list);
+    cout << "\nCloned list : \n";
+	Node *cloned_list_1= clone_1(start);
+	print(cloned_list_1);
 
 	return 0;
 }
