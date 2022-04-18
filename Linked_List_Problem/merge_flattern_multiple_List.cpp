@@ -15,13 +15,13 @@ class ListNode
     }
 };
  
-void push (ListNode* &head_ref, int new_data)
+void push (ListNode* &head, int new_data)
 {
     ListNode* new_node = new ListNode(new_data);
     new_node->right = NULL;
     new_node->data = new_data;
-    new_node->down = head_ref;
-    head_ref = new_node;
+    new_node->down = head;
+    head = new_node;
 }
  
 /*  print nodes in the flattened linked list */
