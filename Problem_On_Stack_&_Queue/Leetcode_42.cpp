@@ -1,7 +1,8 @@
 // strapping rain water
 #include<bits/stdc++.h>
 using namespace std;
-// using stack
+
+// using stack O(n) space and O(n) time
 int trap(vector<int > height){
   int len =height.size();
   stack<int> st;
@@ -22,6 +23,35 @@ for(int i=0;i<len;i++){
     st.push(i);
 }
 return res;
+}
+// O(1) space and O(n) time
+int trapWater(vector<int > height){
+   int len = height.size();
+   int leftMax = 0,rightMax=0,left=0,right=len-1,result=0;
+   while (left<right)
+   {
+       if(height[left]<height[right]){
+           if(height[left>=leftMax])
+               leftMax = height[left];
+           
+           else
+               result+=(leftMax-height[left]);
+           
+            left+=1;
+       }
+      
+       else{
+           if(height[right]>=rightMax)
+               rightMax = height[right];
+           
+           else
+               result+=(rightMax-height[right]);
+           
+          right-=1;
+       }
+        
+   }
+   return result;
 }
 int main(){
     vector<int > height{0,1,0,2,1,0,1,3,2,1,2,1};
@@ -45,6 +75,8 @@ int main(){
     }
     cout<<answer<<endl;;
     int ans = trap(height);
-    cout<<ans;
+    cout<<ans<<endl;
+    int result = trapWater(height);
+    cout<<result;
     return 0;
 }
