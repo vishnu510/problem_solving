@@ -32,9 +32,33 @@ int largestRectangleArea(vector<int>& heights) {
     }
      return maxArea;   
     }
+
+    int largestRectArea(vector<int>& heights) {
+         stack<int> st;
+        int ans=0;
+        heights.push_back(0);
+       
+        for(int i=0;i<heights.size();i++){
+            while(!st.empty() && heights[st.top()]>heights[i]){
+                
+                int top=heights[st.top()];
+                st.pop();
+                int ran=st.empty()?-1:st.top();
+              
+                ans=max(ans,top*(i-ran-1));
+              
+            }
+            st.push(i);
+            
+        }
+        return ans;
+    }
 int main(){
-    vector<int> heights{2,1,5,6,2,};
+    vector<int> heights{2,1,5,6,2,3};
+    //this approach took O(n^2) time
     int ans =largestRectangleArea(heights);
-    cout<<ans;
+    cout<<ans<<endl;
+    int answer =largestRectArea(heights);
+    cout<<answer;
     return 0;
 }
