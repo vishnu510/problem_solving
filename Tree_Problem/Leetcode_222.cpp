@@ -17,7 +17,13 @@ TreeNode* newNode(int data){
     return temp;
 }
 int countNodes(TreeNode* root) {
-       return root?(1+countNodes(root->left)+countNodes(root->right)):0;
+       if(root==NULL){
+           return 0;
+       }
+       if(root->left==NULL and root->right==NULL){
+           return 1;
+       }
+       return countNodes(root->left)+countNodes(root->right);
     }
 int main(){
     TreeNode*root = newNode(1);
