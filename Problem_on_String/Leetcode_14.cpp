@@ -28,11 +28,29 @@ string longestCommonPrefix(vector<string>& strs) {
       }
      return res;
     }
+    // Second Approach
+    string longestCommonPrefix_1(vector<string>& strs) {
+      if(strs.size()==0) return "";
+      int len = strs.size();
+      sort(strs.begin(),strs.end());
+      string str1 = strs[0];
+      string str2 = strs[len-1];
+      string result;
+      for(int i=0;i<len;i++){
+          if(str1[i]==str2[i]){
+              result+=str1[i];
+          }
+          else break;
+      }
+      return result;
+
+    }
 
 int main(){
     
      vector<string>str = {"flower","flow","flight"};
     cout<<longestCommonPrefix(str);
+    cout<<longestCommonPrefix_1(str);
     
     return 0;
 }
