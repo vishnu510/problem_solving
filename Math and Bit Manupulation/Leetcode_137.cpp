@@ -14,10 +14,24 @@ int singleNumber(vector<int>& nums) {
     }
     return 0;
 }
+// Second Approach constant Space
+int singleNumbers(vector<int>& nums){
+    int one=0,two=0;
+    int nonThree;
+    for(int i=0;i<nums.size();i++){
+        two |=one & i;
+        one^= i;
+        nonThree= ~(one&two);
+        one&= nonThree;
+        two&= nonThree;
+    }
+    return one;
+}
 
 int main(){
 
     vector<int> nums = {2,2,3,2};
-    cout<<singleNumber(nums);
+    cout<<singleNumber(nums)<<endl;
+    cout<<singleNumbers(nums);
     return 0;
 }
