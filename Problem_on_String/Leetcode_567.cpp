@@ -17,7 +17,7 @@ bool checkInclusion(string s1, string s2) {
                 matched++;
             }
         }
-        if(matched==s1.size()){
+        if(matched==s1Map.size()){
             return true;
         }
         if(s1.size()<=windStart+1-windowEnd){
